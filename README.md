@@ -38,11 +38,13 @@ Configuration files of customers where we've deployed the fanuc driver
    - Click Apply
    - Enter username and password when prompted
    - Click OK
+5. Run ```gpupdate /force```
 
-5. Test the configuration:
+6. Test the configuration:
    - Restart the device
    - Verify automatic login occurs
    - Confirm the password is still valid when needed
+
 
 ### 2. Configure Automatic Power-On
 1. Click the Start button.
