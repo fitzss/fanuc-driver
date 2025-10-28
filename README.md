@@ -88,7 +88,7 @@ Configuration files of customers where we've deployed the fanuc driver
      - `InactivityNoCsrss` = `0`
      - `InactivityNoDisk` = `0`
 
-4. Test the Configuration:
+#### 4. Test the Configuration:
    - Leave the device idle for extended period
    - Verify it doesn't go to sleep
    - Verify it doesn't log off
