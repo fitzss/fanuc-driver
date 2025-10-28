@@ -38,23 +38,26 @@ Configuration files of customers where we've deployed the fanuc driver
    - Click Apply
    - Enter username and password when prompted
    - Click OK
+5. Run ```gpupdate /force```
 
-5. Test the configuration:
+6. Test the configuration:
    - Restart the device
    - Verify automatic login occurs
    - Confirm the password is still valid when needed
 
 ---
 
-### 2) Configure automatic power-on after power loss (BIOS) + quick test
-**Enter BIOS/UEFI**  
-- During boot press **Del/F2** (or: **Settings → System → Recovery → Advanced startup → Restart now → Troubleshoot → Advanced options → UEFI Firmware Settings → Restart**)
-
-**Set AC-loss behavior (GMKtec/Aptio BIOS)**
-- **Boot → State After G3 (a.k.a. AC Back / Restore on AC Power Loss)** → **S0 / Power On**
-- (Optional) **Chipset → Wake on LAN = Enabled** (if present)
-
-**Save & Exit** (F4), then **test**: pull AC for ~5s → plug in → the PC should power on automatically and auto-logon.
+### 2. Configure Automatic Power-On
+1. Access the BIOS/UEFI settings during boot (usually by pressing F2, F10, or Del)
+2. Navigate to Power Management or Advanced settings
+3. Look for and enable:
+   - "AC Power Recovery" or "Restore on AC Power Loss"
+   - "Power On After Power Failure"
+4. Save and exit BIOS
+5. Test the configuration by:
+   - Disconnecting power
+   - Reconnecting power
+   - Verifying the device boots automatically
 
 ---
 
