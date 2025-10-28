@@ -34,7 +34,7 @@ Configuration files of customers where we've deployed the fanuc driver
    - Reboot the PC
    - Press **Win+R**, type `netplwiz`, and press **Enter** (or type `control userpasswords2` and press **Enter**)
    - The "Users must enter a user name and password to use this computer" checkbox will now be present
-   - Check the box
+   - Uncheck the box
    - Click Apply
    - Enter username and password when prompted
    - Click OK
