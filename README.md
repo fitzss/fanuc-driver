@@ -59,25 +59,28 @@ Configuration files of customers where we've deployed the fanuc driver
 
 
 ### 3. Disable Sleep and Auto-Logoff
-1. Configure Power Settings:
-   - Open Control Panel > Power Options
-   - Click "Change plan settings" for the active plan
-   - Click "Change advanced power settings"
-   - Expand each of these settings and set to "Never":
-     - "Hard disk" → "Turn off hard disk after"
-     - "Sleep" → "Sleep after"
-     - "Sleep" → "Allow hybrid sleep"
-     - "Sleep" → "Hibernate after"
-     - "Display" → "Turn off display after"
-     - "USB settings" → "USB selective suspend setting"
+#### 1. Configure Power Settings:
+   - Press Win+R → powercfg.cpl → Enter.
+   - Click Change plan settings on the active plan:
+     - Turn off the display = Never
+     - Put the computer to sleep = Never → Save
+   - Click Change advanced power settings and set:
+     - Hard disk → Turn off hard disk after = 0 (Never)
+     - Sleep → Sleep after = Never (0)
+     - Sleep → Hibernate after = Never (0)
+     - Sleep → Allow wake timers = Disabled
+(or “Important wake timers only” if you truly use scheduled wakes)
+     - USB settings → USB selective suspend = Disabled
+     - PCI Express → Link State Power Management = Off
+   - Note: “Allow hybrid sleep” is not shown on S0 devices—ignore it.
 
-2. Disable Screen Saver:
-   - Open Control Panel > Personalization
+#### 2. Disable Screen Saver:
+   - Open Control Panel > Personalization or Type Screen Saver
    - Click "Screen Saver"
    - Set "Screen saver" to "None"
    - Uncheck "On resume, display logon screen"
 
-3. Disable Auto-Logoff:
+#### 3. Disable Auto-Logoff:
    - Press **Win+R**, type `regedit`, and press **Enter**.
    - Navigate to: `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`
    - Create or modify these DWORD values:
