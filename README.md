@@ -45,23 +45,18 @@ Configuration files of customers where we've deployed the fanuc driver
    - Confirm the password is still valid when needed
 
 ### 2. Configure Automatic Power-On
-1. Access the BIOS/UEFI settings during boot (usually by pressing F2, F10, or Del)
-2. Navigate to Power Management or Advanced settings
-3. Look for and enable:
-   - "AC Power Recovery" or "Restore on AC Power Loss"
-   - "Power On After Power Failure"
-4. Save and exit BIOS
-5. In Windows, open Power Options:
-   - Open Control Panel > Power Options
-   - Click "Change plan settings" for the active plan
-   - Click "Change advanced power settings"
-   - Expand "Hard disk" and set "Turn off hard disk after" to "Never"
-   - Expand "Sleep" and set "Allow hybrid sleep" to "Off"
-   - Set "Hibernate after" to "Never"
-6. Test the configuration by:
-   - Disconnecting power
-   - Reconnecting power
-   - Verifying the device boots automatically
+1. Click the Start button.
+2. Navigate to Settings > System > Recovery.
+3. Next to "Advanced startup," click Restart now.
+4. After your PC restarts, select Troubleshoot.
+5. Click Advanced options.
+6. Select UEFI Firmware Settings.
+7. Click Restart to reboot directly into your BIOS/UEFI.
+8. Set: Boot → Wake on Power = S0 State
+9. Save & Exit (F4).
+10. Test: pull power for ~5s → plug back in → it should power itself on.
+11. Save and exit BIOS
+
 
 ### 3. Disable Sleep and Auto-Logoff
 1. Configure Power Settings:
