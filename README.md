@@ -57,7 +57,6 @@ Configuration files of customers where we've deployed the fanuc driver
 8. Set: Boot → Wake on Power = S0 State
 9. Save & Exit (F4).
 10. Test: pull power for ~5s → plug back in → it should power itself on.
-11. Save and exit BIOS
 
 
 ### 3. Disable Sleep and Auto-Logoff
