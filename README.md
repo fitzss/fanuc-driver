@@ -61,7 +61,7 @@ Configuration files of customers where we've deployed the fanuc driver
 
 
 ### 3. Disable Sleep and Auto-Logoff
-#### 1. Configure Power Settings:
+1. Configure Power Settings:
    - Press Win+R → powercfg.cpl → Enter.
    - Click Change plan settings on the active plan:
      - Turn off the display = Never
@@ -76,13 +76,13 @@ Configuration files of customers where we've deployed the fanuc driver
      - PCI Express → Link State Power Management = Off
    - Note: “Allow hybrid sleep” is not shown on S0 devices—ignore it.
 
-#### 2. Disable Screen Saver:
+2. Disable Screen Saver:
    - Open Control Panel > Personalization or Type Screen Saver
    - Click "Screen Saver"
    - Set "Screen saver" to "None"
    - Uncheck "On resume, display logon screen"
 
-#### 3. Disable Auto-Logoff:
+3. Disable Auto-Logoff:
    - Press **Win+R**, type `regedit`, and press **Enter**.
    - Navigate to: `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`
    - Create or modify these DWORD values:
@@ -90,7 +90,7 @@ Configuration files of customers where we've deployed the fanuc driver
      - `InactivityNoCsrss` = `0`
      - `InactivityNoDisk` = `0`
 
-#### 4. Test the Configuration:
+4. Test the Configuration:
    - Leave the device idle for extended period
    - Verify it doesn't go to sleep
    - Verify it doesn't log off
