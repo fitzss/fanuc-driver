@@ -104,13 +104,17 @@ Configuration files of customers where we've deployed the fanuc driver
    - Under **Startup type**, select **Disabled**.
    - Click **Stop** (if running), then **OK**.
 
-2. (Pro/Enterprise) Disable via Group Policy:
-   - Press **Win+R**, type `gpedit.msc`, and press **Enter**.
-   - Navigate to:  
-     `Computer Configuration` → `Administrative Templates` → `Windows Components` → `Windows Update`
-   - Double-click **Configure Automatic Updates**.
-   - Set to **Disabled**, click **Apply**, then **OK**.
-   - (Optional) Adjust **Do not include drivers with Windows Updates** or other scheduling options as needed.
+2. Disable via Group Policy:
+   - Win+R → gpedit.msc
+   - Computer Configuration → Administrative Templates → Windows Components → Windows Update → Manage end user experience
+     - Configure Automatic Updates = Disabled
+   - Windows Update → Manage updates offered from Windows Update
+      - Do not include drivers with Windows Updates = Enabled
+   - Windows Update → Legacy Policies
+      - No auto-restart with logged on users for scheduled automatic updates installations = Enabled
+   - Apply the policies: ```gpupdate /force```
+     - Reboot
+    - Why: Services can get re-enabled by admins/SCCM; policies make restarts and driver pushes extremely unlikely. 
 
 ### 5. Network Configuration and Driver Installation
 1. Install ZeroTier:
