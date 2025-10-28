@@ -1,33 +1,48 @@
 # fanuc-driver-configuration
-Configuration files of customers where we've deployed the Fanuc driver
+Configuration files of customers where we've deployed the fanuc driver
 
-## FleetGlue Bridge Device Checklist (GMKtec KB5 / Win11 Pro 24H2)
+## FleetGlue Bridge Device Checklist
 
-> Hardware: **GMKtec KB5 (Intel N5105, 8GB/128GB)**  
-> OS: **Windows 11 Pro 24H2** (Modern Standby **S0**)
+### 0. Pre-requisites
+ 1. Purchase: GMKtec Mini PC Intel N5105, 10nm 8GB RAM 128GB SSD ([amazon](https://www.amazon.com/dp/B0B75PT2RY?ref=fed_asin_title&th=1))
+ 2. The following checklist is Windows specific as that is the default OS of the GMKtec Mini
 
----
+### 1. Configure Automatic Login while retaining Password Retention
+1. Open Registry Editor:
+   - Press **Win+R**, type `regedit`, and press **Enter**.
 
-### 0) Pre-requisites
-- Track each bridge in your **Drivers-Setup-Tracker** (hostname, static IP/subnet/gateway, robot IP, ZeroTier network ID, local admin credentials).
-- Put installers on USB/share: **Fanuc driver**, **Fluent Bit**, **Mosquitto**, **ZeroTier**.
-- Plan log path: `C:\FleetGlue\logs\`.
+2. Navigate to the PasswordLess registry key:
+   ```
+   HKEY_LOCAL_MACHINE
+     └─ SOFTWARE
+         └─ Microsoft
+             └─ Windows NT
+                 └─ CurrentVersion
+                     └─ PasswordLess
+                         └─ Device
+   ```
 
----
+3. Configure DevicePasswordLessBuildVersion:
+   - Find or create `DevicePasswordLessBuildVersion` (DWORD)
+   - Set Value data to `0`
+   - If the key doesn't exist:
+     - Right-click → New → DWORD (32-bit) Value
+     - Name it `DevicePasswordLessBuildVersion`
+     - Set Value data to `0`
 
-### 1) Configure automatic login (keep password usable)
-1. **Enable the password checkbox**
-   - `Win+R → regedit`  
-   - Go to  
-     `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\PasswordLess\Device`  
-   - Create/Set **DWORD** `DevicePasswordLessBuildVersion = 0`  
-   - **Reboot**
-2. **Turn on auto-logon**
-   - `Win+R → netplwiz` (or `control userpasswords2`)  
-   - **Uncheck** “Users must enter a user name and password to use this computer.”  
-   - Click **Apply**, enter the local admin **username + password**, **OK**
-3. **Test**
-   - Restart → it should land on desktop automatically (password still works for UAC/RDP)
+4. Configure Auto-logon:
+   - Reboot the PC
+   - Press **Win+R**, type `netplwiz`, and press **Enter** (or type `control userpasswords2` and press **Enter**)
+   - The "Users must enter a user name and password to use this computer" checkbox will now be present
+   - Uncheck the box
+   - Click Apply
+   - Enter username and password when prompted
+   - Click OK
+
+5. Test the configuration:
+   - Restart the device
+   - Verify automatic login occurs
+   - Confirm the password is still valid when needed
 
 ---
 
